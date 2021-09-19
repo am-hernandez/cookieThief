@@ -10,14 +10,17 @@
   <body>
     <header>
       <h1 id="headline">Cookie Thief!</h1>
+      <button id="newGameBtn">new game</button>
     </header>
     <main>
       <div id="cookieDisplay" class="container">
         <div id="cookies">
           <h2>remaining cookies</h2>
+          <p id="gameStateMessage"></p>
         </div>
         <div id="robot">
           <h2>the cookie thief</h2>
+          <p>🤖</p>
         </div>
       </div>
       <div id="userGuessesContainer" class="container">
@@ -28,6 +31,9 @@
           maxlength="1"
           placeholder="letter"
         />
+        <button type="submit" id="letterSubmit" name="letterInput">
+          submit
+        </button>
         <h2>~~ recent guesses ~~</h2>
         <ul id="userGuesses">
           <li>A</li>
