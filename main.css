@@ -10,9 +10,20 @@ body {
 
 header {
   border-bottom: solid 8px #000;
-  padding: 1em;
+  padding: 1em 0.75em;
   background-color: #00f;
   text-align: center;
+}
+
+header > button {
+  width: 5.5em;
+  height: 30.67px;
+  float: right;
+  margin: auto 0;
+}
+#headline {
+  float: left;
+  letter-spacing: 3px;
 }
 
 main {
@@ -28,6 +39,23 @@ footer {
   background-color: #f00;
 }
 
+button {
+  display: block;
+  margin: auto;
+  border: solid 1px #000;
+  border-radius: 2px;
+  padding: 0.2em 0;
+  background-color: #f00;
+  color: #fff;
+  font-weight: 1000;
+  box-shadow: inset 1px 1px rgba(255, 255, 255, 0.3),
+    inset -1px -1px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+  filter: brightness(50%);
+}
+
 h1,
 h2 {
   margin: 0;
@@ -39,8 +67,8 @@ h1 {
 
 .container {
   width: 80%;
-  margin: 2rem auto;
-  border-radius: 15px;
+  margin: 1rem auto;
+  border-radius: 5px;
   padding: 1rem;
   background-color: #ddd;
   text-align: center;
@@ -49,18 +77,35 @@ h1 {
 
 #cookieDisplay {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
 #cookieDisplay div {
+  flex: 1 160px;
   border: solid 2px black;
+  padding: 1em;
+}
+
+#robot p {
+  width: 1.5em;
+  height: 1.5em;
+  margin: 2rem auto;
+  border-radius: 30px;
+  font-size: 3em;
+  line-height: 1.5em;
+  background-color: #000;
 }
 
 #letterInput {
   width: 3em;
   height: 3em;
-  margin-bottom: 2rem;
   text-align: center;
+}
+
+#letterSubmit {
+  width: 3rem;
+  margin-bottom: 2rem;
 }
 
 #userGuesses {
@@ -73,6 +118,7 @@ h1 {
 #userGuesses li {
   display: block;
   width: 1em;
+  border-radius: 5px;
   padding: 1em;
   background-color: #fff;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
