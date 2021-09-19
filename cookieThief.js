@@ -3,6 +3,7 @@ const newGameBtn = document.getElementById("newGameBtn");
 const letterInput = document.getElementById("letterInput");
 const letterSubmit = document.getElementById("letterSubmit");
 const gameStateMessage = document.getElementById("gameStateMessage");
+const userGuesses = document.getElementById("userGuesses");
 let newGame;
 
 const ASCIIART = [
@@ -103,6 +104,13 @@ class VanishingMan {
   }
 }
 
+function addRecentGuessLi() {
+  let li = document.createElement("li");
+  userGuesses.appendChild(li).innerHTML = `${
+    newGame.lettersGuessed[newGame.lettersGuessed.length - 1]
+  }`;
+}
+
 newGameBtn.addEventListener("click", function () {
   const wordBank = [
     "nutritious",
@@ -128,4 +136,6 @@ letterSubmit.addEventListener("click", function () {
   newGame.submitGuess(letterInput.value);
   newGame.computeGameState();
   gameStateMessage.innerText = newGame.getGameStateMessage();
+  // add letter to userGuesses ul
+  addRecentGuessLi();
 });
