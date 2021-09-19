@@ -4,6 +4,7 @@ const letterInput = document.getElementById("letterInput");
 const letterSubmit = document.getElementById("letterSubmit");
 const gameStateMessage = document.getElementById("gameStateMessage");
 const userGuesses = document.getElementById("userGuesses");
+const secretPhrase = document.getElementById("secretPhrase");
 let newGame;
 
 const ASCIIART = [
@@ -129,7 +130,12 @@ newGameBtn.addEventListener("click", function () {
   const randomIndex = Math.floor(Math.random() * wordBank.length);
   // create new VanishingMan game instance
   newGame = new VanishingMan(wordBank[randomIndex]);
+  // show ready game state
   gameStateMessage.innerText = newGame.getGameStateMessage();
+  // show secretPhrase placeholder text
+  secretPhrase.innerText = newGame.getSecretWordPuzzle();
+  // clear recent guesses ul
+  userGuesses.innerHTML = "";
 });
 
 letterSubmit.addEventListener("click", function () {
@@ -137,5 +143,9 @@ letterSubmit.addEventListener("click", function () {
   newGame.computeGameState();
   gameStateMessage.innerText = newGame.getGameStateMessage();
   // add letter to userGuesses ul
-  addRecentGuessLi();
+  if (newGame.lettersGuessed.length > userGuesses.children.length) {
+    addRecentGuessLi();
+  }
+  // update secretPhrase placeholder text
+  secretPhrase.innerText = newGame.getSecretWordPuzzle();
 });
