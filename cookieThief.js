@@ -1,39 +1,53 @@
+// target html elements
+const newGameBtn = document.getElementById("newGameBtn");
+const letterInput = document.getElementById("letterInput");
+const letterSubmit = document.getElementById("letterSubmit");
+const gameStateMessage = document.getElementById("gameStateMessage");
+let newGame;
+
 const ASCIIART = [
   `
-__O__O__
-_O____O_
-__O__O__
-=========`,
+ ==========
+|__________|
+|__________|
+|__________|
+ ==========`,
   `
-__O__O__
-_O____O_
-__O_____ 
-=========`,
+ ==========
+|__________|
+|_______🍪_|
+|__________|
+ ==========`,
   `
-__O__O__
-______O_
-__O_____  
-=========`,
+ ==========
+|__🍪______|
+|_______🍪_|
+|__________|
+ ==========`,
   `
-__O_____
-______O_
-__O_____    
-=========`,
+ ==========
+|__🍪______|
+|_______🍪_|
+|__🍪______| 
+ ==========`,
   `
-__O_____
-______O_
-________    
-=========`,
+ ==========
+|__🍪__🍪__|
+|_______🍪_|
+|__🍪______| 
+ =========`,
   `
-________
-______O_
-________    
-=========`,
+ ==========
+|__🍪__🍪__|
+|_🍪____🍪_|
+|__🍪______| 
+ ==========`,
   `
-________
-________
-________
-=========`,
+ ===========
+|__🍪__🍪__|
+|_🍪____🍪_|
+|__🍪__🍪__|
+ ===========`,
 ];
 
 class VanishingMan {
@@ -67,15 +81,13 @@ class VanishingMan {
   }
   getGameStateMessage() {
     if (this.gameState === "playing") {
-      return `There is a total of ${
-        this.remainingGuesses
-      } guesses remaining:\n${ASCIIART[this.remainingGuesses]}`;
+      return `cookies remaining:\n${ASCIIART[this.remainingGuesses]}`;
     } else if (this.gameState === "lost") {
-      return `Game Over, the word was "${this.secretWord.join("")}":\n${
-        ASCIIART[0]
-      }`;
+      return `Game Over, the robot stole all of the cookies! 😢\nThe word was "${this.secretWord.join(
+        ""
+      )}":\n${ASCIIART[0]}`;
     } else {
-      return `Winner Winner Chicken Dinner, you won!`;
+      return `Winner Winner, you won! You've stopped the the cookie thief!`;
     }
   }
   submitGuess(letter) {
@@ -91,21 +103,29 @@ class VanishingMan {
   }
 }
 
-function simulateVanishingMan(phraseToGuess) {
+newGameBtn.addEventListener("click", function () {
+  const wordBank = [
+    "nutritious",
+    "physical",
+    "enormous",
+    "belief",
+    "pause",
+    "volatile",
+    "provide",
+    "uncovered",
+    "horses",
+    "placid",
+    "puncture",
+    "overjoyed",
+  ];
+  const randomIndex = Math.floor(Math.random() * wordBank.length);
   // create new VanishingMan game instance
-  const newGame = new VanishingMan(phraseToGuess);
+  newGame = new VanishingMan(wordBank[randomIndex]);
+  gameStateMessage.innerText = newGame.getGameStateMessage();
+});
 
-  // create bank of characters to randomly choose from as guess
-  const alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-  // create game loop
-  while (newGame.gameState === "playing") {
-    const randomIndex = Math.floor(Math.random() * alphabet.length);
-    newGame.submitGuess(alphabet[randomIndex]);
-    newGame.computeGameState();
-    newGame.getGameStateMessage();
-    newGame.lettersGuessed;
-  }
-  // return result
-  return newGame.gameState;
-}
+letterSubmit.addEventListener("click", function () {
+  newGame.submitGuess(letterInput.value);
+  newGame.computeGameState();
+  gameStateMessage.innerText = newGame.getGameStateMessage();
+});
