@@ -110,12 +110,12 @@ h1 {
 }
 
 #robot p {
-  width: 1.5em;
-  height: 1.5em;
+  width: 1.75em;
+  height: 1.75em;
   margin: 1rem auto;
-  border-radius: 30px;
+  border-radius: 50px;
   font-size: 3em;
-  line-height: 1.5em;
+  line-height: 1.7em;
   background-color: #000;
 }
 
@@ -125,8 +125,7 @@ h1 {
 
 #secretPhrase {
   width: fit-content;
-  /* max-height: 1rem; */
-  margin: auto;
+  margin: 0 auto;
   border-radius: 5px;
   padding: 0.5em;
   background-color: #fff;
