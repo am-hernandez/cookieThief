@@ -83,7 +83,7 @@ class VanishingMan {
   }
   getGameStateMessage() {
     if (this.gameState === "playing") {
-      return `cookies remaining:\n${ASCIIART[this.remainingGuesses]}`;
+      return `\n${ASCIIART[this.remainingGuesses]}`;
     } else if (this.gameState === "lost") {
       return `Game Over, the robot stole all of the cookies! 😢\nThe word was "${this.secretWord.join(
         ""
