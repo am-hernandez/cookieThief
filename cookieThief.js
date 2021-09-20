@@ -8,44 +8,37 @@ const secretPhrase = document.getElementById("secretPhrase");
 let newGame;
 
 const ASCIIART = [
-  `
- ==========
+  `==========
 |__________|
 |__________|
 |__________|
  ==========`,
-  `
- ==========
+  `==========
 |__________|
 |_______🍪_|
 |__________|
  ==========`,
-  `
- ==========
+  `==========
 |__🍪______|
 |_______🍪_|
 |__________|
  ==========`,
-  `
- ==========
+  `==========
 |__🍪______|
 |_______🍪_|
 |__🍪______| 
  ==========`,
-  `
- ==========
+  `==========
 |__🍪__🍪__|
 |_______🍪_|
 |__🍪______| 
  =========`,
-  `
- ==========
+  `==========
 |__🍪__🍪__|
 |_🍪____🍪_|
 |__🍪______| 
  ==========`,
-  `
- ===========
+  `===========
 |__🍪__🍪__|
 |_🍪____🍪_|
 |__🍪__🍪__|
@@ -83,11 +76,11 @@ class VanishingMan {
   }
   getGameStateMessage() {
     if (this.gameState === "playing") {
-      return `\n${ASCIIART[this.remainingGuesses]}`;
+      return `${ASCIIART[this.remainingGuesses]}`;
     } else if (this.gameState === "lost") {
       return `Game Over, the robot stole all of the cookies! 😢\nThe word was "${this.secretWord.join(
         ""
-      )}":\n${ASCIIART[0]}`;
+      )}"\n\n${ASCIIART[0]}`;
     } else {
       return `Winner Winner, you won! You've stopped the the cookie thief!`;
     }
