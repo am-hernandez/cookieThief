@@ -15,18 +15,20 @@ header {
   text-align: center;
 }
 
-header > button {
-  width: 5.5em;
-  height: 30.67px;
-  float: right;
-  margin: auto 0;
-}
 #headline {
   float: left;
   letter-spacing: 3px;
 }
 
+#newGameBtn {
+  width: 5.5em;
+  height: 30.67px;
+  float: right;
+  margin: auto 0;
+}
+
 main {
+  flex: 0.5;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -76,6 +78,7 @@ h1 {
 }
 
 #cookieDisplay {
+  flex: 1;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -97,6 +100,13 @@ h1 {
   background-color: #000;
 }
 
+#secretPhrase {
+  border-radius: 5px;
+  padding: 0.5em;
+  background-color: #fff;
+  font-size: 1.25em;
+}
+
 #letterInput {
   width: 3em;
   height: 3em;
@@ -109,6 +119,7 @@ h1 {
 }
 
 #userGuesses {
+  flex: 1;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
